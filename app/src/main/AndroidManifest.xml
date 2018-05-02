@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CardActivity" />
+        <activity android:name=".ClosetActivity" />
+        <activity android:name=".RandomActivity" />
+        <activity android:name=".EditActivity"></activity>
     </application>
 
 </manifest>
