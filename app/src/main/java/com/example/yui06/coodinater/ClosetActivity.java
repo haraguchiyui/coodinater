@@ -19,13 +19,14 @@ public class ClosetActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(this,EditActivity.class);
+                Intent intent2;
+                intent2 = new Intent(getApplicationContext(),EditActivity.class);
                 startActivity(intent2);
 
             }
-        };
 
 
+            });
     }
 
 
