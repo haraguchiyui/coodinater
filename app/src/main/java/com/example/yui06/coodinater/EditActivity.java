@@ -8,12 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+
+import io.realm.Realm;
 
 import static android.provider.MediaStore.Video.Thumbnails.EXTERNAL_CONTENT_URI;
 
@@ -22,6 +26,11 @@ public class EditActivity extends AppCompatActivity {
     static final int REQUEST_CODE_GALLERY = 1;
     static final int REQUEST_CODE_CAMERA = 2;
 
+    public Realm realm;
+
+    public EditText colorEditText;
+    public EditText contentEditText;
+
 
     ImageView imageView;
 
@@ -29,7 +38,13 @@ public class EditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+
+        realm=Realm.getDefaultInstance();
+
         imageView=(ImageView)findViewById(R.id.imageView);
+        colorEditText=(EditText)findViewById(R.id.colorEditText);
+        contentEditText=(EditText)findViewById(R.id.contentEditText);
+
 
         new AlertDialog.Builder(EditActivity.this)
                 .setTitle("画像を選択")
@@ -83,6 +98,31 @@ public class EditActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    public void save(final String color,final String content,final Bitmap picture){
+
+
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                MemoActivity memo =realm.createObject(MemoActivity.class);
+                memo.picture = picture;
+                memo.color = color;
+                memo.content= content;
+
+            }
+        });
+
+    }
+
+    public void edit(View view){
+
+        String color=colorEditText.getText().toString();
+
+        String content=contentEditText.getText().toString();
+
+        Bitmap picture=??
     }
 
 }

@@ -20,7 +20,7 @@
             app:srcCompat="@mipmap/ic_launcher" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/colorEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -29,7 +29,7 @@
             android:text="Name" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/contentEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
