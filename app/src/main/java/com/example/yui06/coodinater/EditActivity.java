@@ -39,11 +39,11 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
-        realm=Realm.getDefaultInstance();
+        realm = Realm.getDefaultInstance();
 
-        imageView=(ImageView)findViewById(R.id.imageView);
-        colorEditText=(EditText)findViewById(R.id.colorEditText);
-        contentEditText=(EditText)findViewById(R.id.contentEditText);
+        imageView = (ImageView) findViewById(R.id.imageView);
+        colorEditText = (EditText) findViewById(R.id.colorEditText);
+        contentEditText = (EditText) findViewById(R.id.contentEditText);
 
 
         new AlertDialog.Builder(EditActivity.this)
@@ -64,7 +64,7 @@ public class EditActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                                startActivityForResult(intent,REQUEST_CODE_CAMERA);
+                                startActivityForResult(intent, REQUEST_CODE_CAMERA);
 
                             }
                         })
@@ -74,55 +74,63 @@ public class EditActivity extends AppCompatActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        super.onActivityResult(requestCode,resultCode,intent);
+        super.onActivityResult(requestCode, resultCode, intent);
 
-        if (resultCode==RESULT_OK){
-            if (requestCode==REQUEST_CODE_GALLERY){
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REQUEST_CODE_GALLERY) {
                 try {
                     InputStream inputStream = getContentResolver().openInputStream(intent.getData());
                     Bitmap bmp1 = BitmapFactory.decodeStream(inputStream);
                     inputStream.close();
                     imageView.setImageBitmap(bmp1);
-                }catch (Exception e){
-                    Toast.makeText(this,"エラー",Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
+                    Toast.makeText(this, "エラー", Toast.LENGTH_LONG).show();
                 }
 
-            }else if (requestCode==REQUEST_CODE_CAMERA){
-                Bitmap bmp2 = (Bitmap)intent.getExtras().get("data");
-                imageView.setImageBitmap(bmp2);
+            } else if (requestCode == REQUEST_CODE_CAMERA) {
+                Bitmap bmp1 = (Bitmap) intent.getExtras().get("data");
+                imageView.setImageBitmap(bmp1);
 
             }
 
-        }else if (resultCode==RESULT_CANCELED){
-            Toast.makeText(EditActivity.this,"CANCEL",Toast.LENGTH_SHORT).show();
+        } else if (resultCode == RESULT_CANCELED) {
+            Toast.makeText(EditActivity.this, "CANCEL", Toast.LENGTH_SHORT).show();
         }
 
 
     }
 
-    public void save(final String color,final String content,final Bitmap picture){
+    public void save(final String color, final String content, final Bitmap picture) {
 
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                MemoActivity memo =realm.createObject(MemoActivity.class);
+                MemoActivity memo = realm.createObject(MemoActivity.class);
                 memo.picture = picture;
                 memo.color = color;
-                memo.content= content;
+                memo.content = content;
 
             }
         });
 
     }
 
-    public void edit(View view){
+    public void edit(View view) {
 
-        String color=colorEditText.getText().toString();
+        String color = colorEditText.getText().toString();
 
-        String content=contentEditText.getText().toString();
+        String content = contentEditText.getText().toString();
 
-        Bitmap picture=??
+
+
+
     }
 
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+
+        realm.close();
+    }
 }
