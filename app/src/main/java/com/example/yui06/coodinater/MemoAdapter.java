@@ -11,10 +11,48 @@ import android.widget.ImageView;
 
 import java.util.List;
 
-public class CardAdapter extends ArrayAdapter<CardActivity> {
-    List<CardActivity> mCards;
+public class MemoAdapter extends ArrayAdapter<MemoActivity> {
 
-    public CardAdapter(Context context, int resource,List<CardActivity> objects) {
+    public LayoutInflater layoutInflater;
+
+
+
+
+    public MemoAdapter( Context context, int resource, List<MemoActivity> objects) {
+        super(context, resource, objects);
+        layoutInflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    @Override
+    public View getView(int position,View convertView,ViewGroup parent) {
+
+        MemoActivity memo = getItem(position);
+
+        if (convertView == null) {
+            convertView = layoutInflater.inflate(R.layout.activity_closet, null);
+        }
+
+        ImageView icon1=(ImageView)convertView.findViewById(R.id.imageView4);
+        ImageView icon2=(ImageView)convertView.findViewById(R.id.imageView5);
+        ImageView icon3=(ImageView)convertView.findViewById(R.id.imageView6);
+
+        icon1.setImageBitmap(memo.picture);
+        icon2.setImageBitmap(memo.picture);
+        icon3.setImageBitmap(memo.picture);
+
+        return convertView;
+
+
+    }
+}
+
+
+
+
+
+
+/*
+    public MemoAdapter(Context context, int resource, List<CardActivity> objects) {
         super(context, resource, objects);
 
         mCards = objects;
@@ -26,7 +64,7 @@ public class CardAdapter extends ArrayAdapter<CardActivity> {
     }
 
     @Override
-    public CardActivity getItem(int position){
+    public MemoActivity getItem(int position){
         return mCards.get(position);
     }
 
@@ -57,6 +95,12 @@ public class CardAdapter extends ArrayAdapter<CardActivity> {
 
         final CardActivity item=getItem(position);
 
+        if (item==null){
+            //set data
+            viewHolder.icon1.setBackgroundResource(memo.picture);
+        }
+
         return convertView;
     }
 }
+*/
