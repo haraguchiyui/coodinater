@@ -122,6 +122,12 @@ public class EditActivity extends AppCompatActivity {
 
         String content = contentEditText.getText().toString();
 
+        Bitmap picture =imageView.getDrawingCache();
+
+        save(color,content,picture);
+
+        finish();
+
 
 
 
