@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
@@ -33,6 +34,8 @@ public class EditActivity extends AppCompatActivity {
 
 
     ImageView imageView;
+
+    byte[] picture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,13 +86,23 @@ public class EditActivity extends AppCompatActivity {
                     Bitmap bmp1 = BitmapFactory.decodeStream(inputStream);
                     inputStream.close();
                     imageView.setImageBitmap(bmp1);
+                    //byte型に変換
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    bmp1.compress(Bitmap.CompressFormat.JPEG,100,baos);
+                    picture=baos.toByteArray();
                 } catch (Exception e) {
                     Toast.makeText(this, "エラー", Toast.LENGTH_LONG).show();
                 }
 
+
+
             } else if (requestCode == REQUEST_CODE_CAMERA) {
                 Bitmap bmp1 = (Bitmap) intent.getExtras().get("data");
                 imageView.setImageBitmap(bmp1);
+                //byte型に変換
+                ByteArrayOutputStream baos=new ByteArrayOutputStream();
+                bmp1.compress(Bitmap.CompressFormat.JPEG,100,baos);
+                picture=baos.toByteArray();
 
             }
 
@@ -100,7 +113,7 @@ public class EditActivity extends AppCompatActivity {
 
     }
 
-    public void save(final String color, final String content, final Bitmap picture) {
+    public void save(final String color, final String content, final byte[] picture) {
 
 
         realm.executeTransaction(new Realm.Transaction() {
@@ -116,13 +129,12 @@ public class EditActivity extends AppCompatActivity {
 
     }
 
-    public void edit(View view) {
+    public void create(View view) {
 
         String color = colorEditText.getText().toString();
 
         String content = contentEditText.getText().toString();
 
-        Bitmap picture =imageView.getDrawingCache();
 
         save(color,content,picture);
 

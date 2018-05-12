@@ -36,9 +36,8 @@ public class MemoAdapter extends ArrayAdapter<MemoActivity> {
         ImageView icon2=(ImageView)convertView.findViewById(R.id.imageView5);
         ImageView icon3=(ImageView)convertView.findViewById(R.id.imageView6);
 
-        icon1.setImageBitmap(memo.picture);
-        icon2.setImageBitmap(memo.picture);
-        icon3.setImageBitmap(memo.picture);
+        //icon2.setImageBitmap(memo.picture);
+        //icon3.setImageBitmap(memo.picture);
 
         return convertView;
 

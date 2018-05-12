@@ -5,7 +5,7 @@ import io.realm.RealmObject;
 
 public class MemoActivity extends RealmObject{
 
-    public Bitmap picture;
+    public byte[] picture;
 
     public String color;
 
