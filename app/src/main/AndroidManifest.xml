@@ -19,7 +19,8 @@
         <activity android:name=".CardActivity" />
         <activity android:name=".ClosetActivity" />
         <activity android:name=".RandomActivity" />
-        <activity android:name=".EditActivity"></activity>
+        <activity android:name=".EditActivity" />
+        <activity android:name=".Card"></activity>
     </application>
 
 </manifest>

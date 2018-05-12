@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.view.View;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
@@ -21,13 +22,17 @@ public class ClosetActivity extends AppCompatActivity {
     Realm realm;
     public ListView listView;
 
+    List<MemoActivity> mCards;
+    MemoAdapter memoAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_closet);
+        setContentView(R.layout.activity_card);
 
         realm= Realm.getDefaultInstance();
         listView=(ListView)findViewById(R.id.listView);
+        mCards=new ArrayList<MemoActivity>();
 
         add=(FloatingActionButton)findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
@@ -45,11 +50,12 @@ public class ClosetActivity extends AppCompatActivity {
 
     public void setMemoList(){
 
-        //realmから読み取る
+        //memoActivityに入ってる中身もってくる
         RealmResults<MemoActivity> results=realm.where(MemoActivity.class).findAll();
+        //realmに保存されてるviewに入る中身もってくる
         List<MemoActivity> items =realm.copyFromRealm(results);
 
-        MemoAdapter memoAdapter= new MemoAdapter(this,R.layout.activity_closet,items);
+        MemoAdapter memoAdapter= new MemoAdapter(this,R.layout.activity_card,items);
 
         listView.setAdapter(memoAdapter);
     }
