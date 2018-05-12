@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -19,20 +21,43 @@ public class ClosetActivity extends AppCompatActivity {
 
     FloatingActionButton add;
 
+    ImageView imageView4;
+    ImageView imageView5;
+    ImageView imageView6;
+    List<Card> mCard;
+
+    LayoutInflater layoutInflater;
+
+
     Realm realm;
     public ListView listView;
 
-    List<MemoActivity> mCards;
+    List<Card> mCards;
     MemoAdapter memoAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
 
+        imageView4=(ImageView)findViewById(R.id.imageView4);
+        imageView5=(ImageView)findViewById(R.id.imageView5);
+        imageView6=(ImageView)findViewById(R.id.imageView6);
+
         realm= Realm.getDefaultInstance();
         listView=(ListView)findViewById(R.id.listView);
-        mCards=new ArrayList<MemoActivity>();
+        mCards=new ArrayList<Card>();
+
+        mCards.add(new Card(imageView4,imageView5,imageView6));
+
+        memoAdapter= new MemoAdapter(this,R.layout.activity_card,mCards);
+        listView.setAdapter(memoAdapter);
+
+
+
+
+
 
         add=(FloatingActionButton)findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
