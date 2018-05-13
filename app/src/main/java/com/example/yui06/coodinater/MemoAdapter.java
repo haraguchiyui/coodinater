@@ -11,13 +11,16 @@ import android.widget.ImageView;
 
 import java.util.List;
 
-public class MemoAdapter extends ArrayAdapter<MemoActivity> {
+public class MemoAdapter extends ArrayAdapter<Card> {
 
     public LayoutInflater layoutInflater;
-    public List<MemoActivity> mCards;
+    public List<Card> mCards;
 
 
-    public MemoAdapter(Context context, int resource, List<MemoActivity> objects) {
+
+
+
+    public MemoAdapter(Context context, int resource, List<Card> objects) {
         super(context, resource, objects);
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -30,7 +33,7 @@ public class MemoAdapter extends ArrayAdapter<MemoActivity> {
     }
 
     @Override
-    public MemoActivity getItem(int position){
+    public Card getItem(int position){
         return mCards.get(position);
     }
 
@@ -59,7 +62,7 @@ public class MemoAdapter extends ArrayAdapter<MemoActivity> {
             viewHolder=(ViewHolder)convertView.getTag();
         }
 
-        final MemoActivity item=getItem(position);
+        final Card item=getItem(position);
 
         if (item==null){
             //bitmap型に戻す

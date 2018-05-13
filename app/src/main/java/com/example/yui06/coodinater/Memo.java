@@ -1,10 +1,8 @@
 package com.example.yui06.coodinater;
 
-import android.graphics.Bitmap;
-import android.widget.ImageView;
 import io.realm.RealmObject;
 
-public class MemoActivity extends RealmObject {
+public class Memo extends RealmObject {
 
     public byte[] picture;
 

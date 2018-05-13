@@ -21,19 +21,18 @@ public class ClosetActivity extends AppCompatActivity {
 
     FloatingActionButton add;
 
-    ImageView imageView4;
-    ImageView imageView5;
-    ImageView imageView6;
-    List<Card> mCard;
-
-    LayoutInflater layoutInflater;
-
-
-    Realm realm;
-    public ListView listView;
 
     List<Card> mCards;
-    MemoAdapter memoAdapter;
+
+    public Realm realm;
+    public ListView listView;
+
+
+
+
+    Bitmap bitmap;
+
+
 
 
     @Override
@@ -41,23 +40,8 @@ public class ClosetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
 
-        imageView4=(ImageView)findViewById(R.id.imageView4);
-        imageView5=(ImageView)findViewById(R.id.imageView5);
-        imageView6=(ImageView)findViewById(R.id.imageView6);
-
-        realm= Realm.getDefaultInstance();
-        listView=(ListView)findViewById(R.id.listView);
-        mCards=new ArrayList<Card>();
-
-        mCards.add(new Card(imageView4,imageView5,imageView6));
-
-        memoAdapter= new MemoAdapter(this,R.layout.activity_card,mCards);
-        listView.setAdapter(memoAdapter);
-
-
-
-
-
+        realm=Realm.getDefaultInstance();
+        bitmap=BitmapFactory.decodeResource(getResources(),R.drawable.white);
 
         add=(FloatingActionButton)findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
@@ -73,25 +57,63 @@ public class ClosetActivity extends AppCompatActivity {
             });
     }
 
+
     public void setMemoList(){
+        //Realmからデータ読み取り
 
-        //memoActivityに入ってる中身もってくる
-        RealmResults<MemoActivity> results=realm.where(MemoActivity.class).findAll();
-        //realmに保存されてるviewに入る中身もってくる
-        List<MemoActivity> items =realm.copyFromRealm(results);
+        RealmResults<Memo> results=realm.where(Memo.class).findAll();
+        List<Memo> items=realm.copyFromRealm(results);
 
-        MemoAdapter memoAdapter= new MemoAdapter(this,R.layout.activity_card,items);
 
-        listView.setAdapter(memoAdapter);
+        ArrayList<Bitmap> arrayList = new ArrayList<>();
+
+        // arrayListにBitmapいれる
+        // adapterつなぐ
+
+
+        for (int i=0 ;i<items.size();i++) {
+
+            Bitmap bmp = null;
+//            byte[] picture=null;
+            if (bmp != null) {
+                bmp = BitmapFactory.decodeByteArray(items.get(i).picture, 0, items.get(i).picture.length);
+
+            }
+
+            arrayList.add(bmp);
+        }
+
+        for (int i=0;i<arrayList.size();i++){
+
+
+            if (i % 3 ==0){
+                Card card=new Card(arrayList.get(0),bitmap,bitmap);
+                mCards.add(card);
+            }
+
+            if (i % 3 ==1){
+                Card card=new Card(arrayList.get(0),arrayList.get(1),bitmap);
+                mCards.add(card);
+
+            }
+
+            if (i % 3 == 2){
+                Card card = new Card(arrayList.get(0),arrayList.get(1),arrayList.get(2));
+                mCards.add(card);
+
+                arrayList.clear();
+            }
+
+            MemoAdapter memoAdapter=new MemoAdapter(this,R.layout.activity_card,mCards);
+
+            listView.setAdapter(memoAdapter);
+
+        }
+
+
+
     }
 
-    @Override
-    protected void onResume(){
-        super.onResume();
-
-        setMemoList();
-
-    }
 
 
 
@@ -101,6 +123,4 @@ public class ClosetActivity extends AppCompatActivity {
 
         realm.close();
     }
-
-
 }

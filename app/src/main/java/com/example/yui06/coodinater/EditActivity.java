@@ -17,6 +17,7 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.List;
 
 import io.realm.Realm;
 
@@ -36,6 +37,7 @@ public class EditActivity extends AppCompatActivity {
     ImageView imageView;
 
     byte[] picture;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,7 +121,7 @@ public class EditActivity extends AppCompatActivity {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                MemoActivity memo = realm.createObject(MemoActivity.class);
+                Memo memo = realm.createObject(Memo.class);
                 memo.picture = picture;
                 memo.color = color;
                 memo.content = content;
