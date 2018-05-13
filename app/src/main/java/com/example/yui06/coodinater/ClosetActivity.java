@@ -23,6 +23,7 @@ public class ClosetActivity extends AppCompatActivity {
 
 
     List<Card> mCards;
+    MemoAdapter memoAdapter;
 
     public Realm realm;
     public ListView listView;
@@ -42,6 +43,15 @@ public class ClosetActivity extends AppCompatActivity {
 
         realm=Realm.getDefaultInstance();
         bitmap=BitmapFactory.decodeResource(getResources(),R.drawable.white);
+        listView=(ListView)findViewById(R.id.listView);
+
+        mCards=new ArrayList<Card>();
+        mCards.add(new Card(bitmap,bitmap,bitmap));
+
+        memoAdapter=new MemoAdapter(this,R.layout.activity_card,mCards);
+        listView.setAdapter(memoAdapter);
+
+
 
         add=(FloatingActionButton)findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +77,8 @@ public class ClosetActivity extends AppCompatActivity {
 
         ArrayList<Bitmap> arrayList = new ArrayList<>();
 
+
+        //pictureをbitmapに変換
         // arrayListにBitmapいれる
         // adapterつなぐ
 
@@ -82,6 +94,8 @@ public class ClosetActivity extends AppCompatActivity {
 
             arrayList.add(bmp);
         }
+
+        //カードに三個ずつ写真いれる
 
         for (int i=0;i<arrayList.size();i++){
 

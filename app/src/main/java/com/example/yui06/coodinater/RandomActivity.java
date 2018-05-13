@@ -13,8 +13,8 @@ import io.realm.RealmResults;
 
 public class RandomActivity extends AppCompatActivity {
 
-    Realm realm;
-    public List<MemoActivity> mCards;
+    /*Realm realm;
+    public List<Card> mCards;
     int number;
 
     ImageView imageView2;
@@ -34,8 +34,8 @@ public class RandomActivity extends AppCompatActivity {
 
         realm=Realm.getDefaultInstance();
 
-        RealmResults<MemoActivity> results=realm.where(MemoActivity.class).findAll();
-        List<MemoActivity> items =realm.copyFromRealm(results);
+        RealmResults<Memo> results=realm.where(Memo.class).findAll();
+        List<Memo> items =realm.copyFromRealm(results);
 
         Random random=new Random();
         number=random.nextInt(mCards.size());
@@ -60,4 +60,6 @@ public class RandomActivity extends AppCompatActivity {
 
         realm.close();
     }
+}
+*/
 }

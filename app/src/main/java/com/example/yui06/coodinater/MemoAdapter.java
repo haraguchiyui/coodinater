@@ -29,13 +29,17 @@ public class MemoAdapter extends ArrayAdapter<Card> {
 
     @Override
     public int getCount(){
+
         return mCards.size();
     }
 
     @Override
     public Card getItem(int position){
+
         return mCards.get(position);
     }
+
+
 
     public static class ViewHolder{
         ImageView icon1;
@@ -65,15 +69,10 @@ public class MemoAdapter extends ArrayAdapter<Card> {
         final Card item=getItem(position);
 
         if (item==null){
-            //bitmap型に戻す
-            Bitmap bmp=null;
-            if (item.picture != null) {
-                bmp = BitmapFactory.decodeByteArray(item.picture, 0, item.picture.length);
-            }
 
-            viewHolder.icon1.setImageBitmap(bmp);
-            viewHolder.icon2.setImageBitmap(bmp);
-            viewHolder.icon3.setImageBitmap(bmp);
+            viewHolder.icon1.setImageBitmap(item.imageView4);
+            viewHolder.icon2.setImageBitmap(item.imageView5);
+            viewHolder.icon3.setImageBitmap(item.imageView6);
 
 
         }
