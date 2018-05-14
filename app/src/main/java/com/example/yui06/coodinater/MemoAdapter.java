@@ -16,6 +16,10 @@ public class MemoAdapter extends ArrayAdapter<Card> {
     public LayoutInflater layoutInflater;
     public List<Card> mCards;
 
+    Memo memo1;
+    Memo memo2;
+    Memo memo3;
+
 
 
 
@@ -25,6 +29,8 @@ public class MemoAdapter extends ArrayAdapter<Card> {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         mCards = objects;
+
+
     }
 
     @Override
@@ -70,9 +76,9 @@ public class MemoAdapter extends ArrayAdapter<Card> {
 
         if (item==null){
 
-            viewHolder.icon1.setImageBitmap(item.imageView4);
-            viewHolder.icon2.setImageBitmap(item.imageView5);
-            viewHolder.icon3.setImageBitmap(item.imageView6);
+            viewHolder.icon1.setImageBitmap(item.memo1);
+            viewHolder.icon2.setImageBitmap(item.memo2);
+            viewHolder.icon3.setImageBitmap(item.memo3);
 
 
         }

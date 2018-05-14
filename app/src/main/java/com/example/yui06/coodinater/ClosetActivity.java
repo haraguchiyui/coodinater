@@ -29,9 +29,7 @@ public class ClosetActivity extends AppCompatActivity {
     public ListView listView;
 
 
-    Bitmap icon1;
-    Bitmap icon2;
-    Bitmap icon3;
+
 
 
     Bitmap bitmap;
@@ -42,17 +40,13 @@ public class ClosetActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_card);
+        setContentView(R.layout.activity_closet);
 
-        realm=Realm.getDefaultInstance();
+
         bitmap=BitmapFactory.decodeResource(getResources(),R.drawable.white);
-        //icon1=BitmapFactory.decodeResource(getResources(),R.id.imageView4);
-        //icon2=BitmapFactory.decodeResource(getResources(),R.id.imageView5);
-        //icon3=BitmapFactory.decodeResource(getResources(),R.id.imageView6);
         listView=(ListView)findViewById(R.id.listView);
 
         mCards=new ArrayList<Card>();
-        //mCards.add(new Card(icon1,icon2,icon3));
 
         memoAdapter=new MemoAdapter(this,R.layout.activity_card,mCards);
         listView.setAdapter(memoAdapter);
@@ -71,17 +65,44 @@ public class ClosetActivity extends AppCompatActivity {
 
 
             });
+
+
     }
 
 
     public void setMemoList(){
+
+        realm=Realm.getDefaultInstance();
         //Realmからデータ読み取り
 
         RealmResults<Memo> results=realm.where(Memo.class).findAll();
         List<Memo> items=realm.copyFromRealm(results);
+        ArrayList<Memo> arrayList = new ArrayList<>();
+        arrayList.addAll(items);
 
+        ArrayList<Memo> tmp = new ArrayList<>();
 
-        ArrayList<Bitmap> arrayList = new ArrayList<>();
+        for (int i = 0 ; i<arrayList.size();i++){
+
+            tmp.add(arrayList.get(i));
+
+            if (i % 3  == 2){
+                mCards.add(new Card(tmp.get(0),tmp.get(1),tmp.get(2)));
+                tmp.clear();
+            }
+
+            if (i == arrayList.size()-1){
+                if (tmp.size() == 1){
+                    mCards.add(new Card(tmp.get(0),new Memo(),new Memo()));
+                }else if (tmp.size() == 2){
+                    mCards.add(new Card(tmp.get(0),tmp.get(1),new Memo()));
+                }
+            }
+            MemoAdapter memoAdapter=new MemoAdapter(this,R.layout.activity_card,mCards);
+
+            listView.setAdapter(memoAdapter);
+        }
+
 
 
         //pictureをbitmapに変換
@@ -89,7 +110,9 @@ public class ClosetActivity extends AppCompatActivity {
         // adapterつなぐ
 
 
-        for (int i=0 ;i<items.size();i++) {
+
+
+       /* for (int i=0 ;i<items.size();i++) {
 
             Bitmap bmp = null;
 //            byte[] picture=null;
@@ -100,6 +123,7 @@ public class ClosetActivity extends AppCompatActivity {
 
             arrayList.add(bmp);
         }
+
 
         //カードに三個ずつ写真いれる
 
@@ -128,12 +152,14 @@ public class ClosetActivity extends AppCompatActivity {
 
             listView.setAdapter(memoAdapter);
 
-        }
+        }*/
     }
 
     @Override
     protected void onResume(){
         super.onResume();
+
+        setMemoList();
 
 
     }

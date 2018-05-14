@@ -8,17 +8,13 @@ import android.widget.ImageView;
 
 public class Card{
 
-    public Bitmap imageView4;
-    public Bitmap imageView5;
-    public Bitmap imageView6;
+    public Memo memo1;
+    public Memo memo2;
+    public Memo memo3;
 
-    public Card(Bitmap imageView4,Bitmap imageView5,Bitmap imageView6){
-        this.imageView4=imageView4;
-        this.imageView5=imageView5;
-        this.imageView6=imageView6;
+    public Card(Memo memo1, Memo memo2, Memo memo3) {
+        this.memo1 = memo1;
+        this.memo2 = memo2;
+        this.memo3 = memo3;
     }
-
-
-
-
 }

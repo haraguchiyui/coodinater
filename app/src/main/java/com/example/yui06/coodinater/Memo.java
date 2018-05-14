@@ -1,13 +1,22 @@
 package com.example.yui06.coodinater;
 
+
+
 import io.realm.RealmObject;
 
 public class Memo extends RealmObject {
 
-    public byte[] picture;
 
-    public String color;
+    public byte[] white;
 
-    public String content;
+    public byte[] picture=white ;
 
+    public String color = "";
+
+    public String content = "";
+
+    public Memo() {
+
+        this.white = R.drawable.white;
+    }
 }

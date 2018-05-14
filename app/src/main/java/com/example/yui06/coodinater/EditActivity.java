@@ -9,9 +9,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -35,8 +37,12 @@ public class EditActivity extends AppCompatActivity {
 
 
     ImageView imageView;
+    Button addData;
 
     byte[] picture;
+
+    ListView listView;
+    MemoAdapter memoAdapter;
 
 
     @Override
@@ -44,11 +50,13 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
-        realm = Realm.getDefaultInstance();
+
 
         imageView = (ImageView) findViewById(R.id.imageView);
+
         colorEditText = (EditText) findViewById(R.id.colorEditText);
         contentEditText = (EditText) findViewById(R.id.contentEditText);
+        addData=(Button)findViewById(R.id.addData);
 
 
         new AlertDialog.Builder(EditActivity.this)
@@ -76,6 +84,8 @@ public class EditActivity extends AppCompatActivity {
                 .show();
 
     }
+
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -117,6 +127,8 @@ public class EditActivity extends AppCompatActivity {
 
     public void save(final String color, final String content, final byte[] picture) {
 
+        realm = Realm.getDefaultInstance();
+
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
@@ -131,7 +143,7 @@ public class EditActivity extends AppCompatActivity {
 
     }
 
-    public void create(View view) {
+    public void addData(View view) {
 
         String color = colorEditText.getText().toString();
 
@@ -140,8 +152,12 @@ public class EditActivity extends AppCompatActivity {
 
         save(color,content,picture);
 
+
         finish();
 
+
+//        Intent intent=new Intent(this,ClosetActivity.class);
+//        startActivity(intent);
 
 
 
@@ -153,4 +169,8 @@ public class EditActivity extends AppCompatActivity {
 
         realm.close();
     }
+
+
 }
+
+

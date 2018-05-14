@@ -19,13 +19,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_card);
+        setContentView(R.layout.activity_main);
 
         relative1 =(RelativeLayout)findViewById(R.id.relative1);
-        //relative2 =(RelativeLayout)findViewById(R.id.relative2);
-        //relative3=(RelativeLayout)findViewById(R.id.relative3);
-        //relative4=(RelativeLayout)findViewById(R.id.relative4);
-        //relative5=(RelativeLayout)findViewById(R.id.relative5) ;
+        relative2 =(RelativeLayout)findViewById(R.id.relative2);
+        relative3=(RelativeLayout)findViewById(R.id.relative3);
+        relative4=(RelativeLayout)findViewById(R.id.relative4);
+        relative5=(RelativeLayout)findViewById(R.id.relative5);
 
         Calendar cal= Calendar.getInstance();
         int month = cal.get(Calendar.MONTH);
@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void myCloset(View v){
-        Intent intent1=new Intent(this,ClosetActivity.class);
-        startActivity(intent1);
+    public void Tops(View v){
+        Intent intent=new Intent(this,ClosetActivity.class);
+        startActivity(intent);
     }
 }
