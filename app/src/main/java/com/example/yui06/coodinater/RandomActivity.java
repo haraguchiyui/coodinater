@@ -2,6 +2,7 @@ package com.example.yui06.coodinater;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -13,7 +14,7 @@ import io.realm.RealmResults;
 
 public class RandomActivity extends AppCompatActivity {
 
-    /*Realm realm;
+    Realm realm;
     public List<Card> mCards;
     int number;
 
@@ -39,16 +40,12 @@ public class RandomActivity extends AppCompatActivity {
 
         Random random=new Random();
         number=random.nextInt(mCards.size());
-
-
-
+        
     }
 
+    public void again(View v){
 
-
-
-
-
+    }
 
 
 
@@ -60,6 +57,4 @@ public class RandomActivity extends AppCompatActivity {
 
         realm.close();
     }
-}
-*/
 }

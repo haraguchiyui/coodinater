@@ -22,15 +22,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_card);
 
         relative1 =(RelativeLayout)findViewById(R.id.relative1);
-        relative2 =(RelativeLayout)findViewById(R.id.relative2);
-        relative3=(RelativeLayout)findViewById(R.id.relative3);
-        relative4=(RelativeLayout)findViewById(R.id.relative4);
-        relative5=(RelativeLayout)findViewById(R.id.relative5) ;
+        //relative2 =(RelativeLayout)findViewById(R.id.relative2);
+        //relative3=(RelativeLayout)findViewById(R.id.relative3);
+        //relative4=(RelativeLayout)findViewById(R.id.relative4);
+        //relative5=(RelativeLayout)findViewById(R.id.relative5) ;
 
         Calendar cal= Calendar.getInstance();
         int month = cal.get(Calendar.MONTH);
-        if (month>=2){
-            if (month<=9) {
+        if(month>=2){
+            if(month<=9){
                 relative1.setBackgroundColor(Color.rgb(255, 153, 102));
             }else {
                 relative1.setBackgroundColor(Color.rgb(51,153,255));

@@ -29,6 +29,9 @@ public class ClosetActivity extends AppCompatActivity {
     public ListView listView;
 
 
+    Bitmap icon1;
+    Bitmap icon2;
+    Bitmap icon3;
 
 
     Bitmap bitmap;
@@ -43,10 +46,13 @@ public class ClosetActivity extends AppCompatActivity {
 
         realm=Realm.getDefaultInstance();
         bitmap=BitmapFactory.decodeResource(getResources(),R.drawable.white);
+        //icon1=BitmapFactory.decodeResource(getResources(),R.id.imageView4);
+        //icon2=BitmapFactory.decodeResource(getResources(),R.id.imageView5);
+        //icon3=BitmapFactory.decodeResource(getResources(),R.id.imageView6);
         listView=(ListView)findViewById(R.id.listView);
 
         mCards=new ArrayList<Card>();
-        mCards.add(new Card(bitmap,bitmap,bitmap));
+        //mCards.add(new Card(icon1,icon2,icon3));
 
         memoAdapter=new MemoAdapter(this,R.layout.activity_card,mCards);
         listView.setAdapter(memoAdapter);
@@ -123,7 +129,11 @@ public class ClosetActivity extends AppCompatActivity {
             listView.setAdapter(memoAdapter);
 
         }
+    }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
 
 
     }
