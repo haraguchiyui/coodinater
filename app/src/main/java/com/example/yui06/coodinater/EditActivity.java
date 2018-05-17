@@ -129,6 +129,8 @@ public class EditActivity extends AppCompatActivity {
 
         realm = Realm.getDefaultInstance();
 
+        //疑問
+        //executeTransactionがいつなぜ線がひかれたのか。またこれがsaveやaddDataメソッドのエラー原因？？
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
