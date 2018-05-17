@@ -133,7 +133,7 @@ public class EditActivity extends AppCompatActivity {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                Memo memo = realm.createObject(Memo.class);
+                Memo memo= realm.createObject(Memo.class);
                 memo.picture = picture;
                 memo.color = color;
                 memo.content = content;
@@ -156,8 +156,8 @@ public class EditActivity extends AppCompatActivity {
         finish();
 
 
-//        Intent intent=new Intent(this,ClosetActivity.class);
-//        startActivity(intent);
+        Intent intent=new Intent(this,ClosetActivity.class);
+        startActivity(intent);
 
 
 

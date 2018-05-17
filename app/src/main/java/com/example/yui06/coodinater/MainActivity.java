@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void randomStart(View v){
-        Intent intent= new Intent(this,RandomActivity.class);
+        Intent intent= new Intent(this,randomActivity.class);
         startActivity(intent);
     }
 

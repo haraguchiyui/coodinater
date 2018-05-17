@@ -18,23 +18,13 @@ import io.realm.Realm;
 import io.realm.RealmResults;
 
 public class ClosetActivity extends AppCompatActivity {
-
     FloatingActionButton add;
-
-
     List<Card> mCards;
     MemoAdapter memoAdapter;
-
     public Realm realm;
     public ListView listView;
-
-
-
-
-
     Bitmap bitmap;
-
-
+    public Memo memo1,memo2,memo3;
 
 
     @Override
@@ -42,68 +32,72 @@ public class ClosetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_closet);
 
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.white);
+        listView = (ListView) findViewById(R.id.listView);
 
-        bitmap=BitmapFactory.decodeResource(getResources(),R.drawable.white);
-        listView=(ListView)findViewById(R.id.listView);
+        mCards = new ArrayList<Card>();
 
-        mCards=new ArrayList<Card>();
+       // mCards.add(new Card(memo1,memo2,memo3));
 
-        memoAdapter=new MemoAdapter(this,R.layout.activity_card,mCards);
+        memoAdapter = new MemoAdapter(this, R.layout.activity_card, mCards);
         listView.setAdapter(memoAdapter);
 
-
-
-        add=(FloatingActionButton)findViewById(R.id.add);
+        add = (FloatingActionButton) findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent2;
-                intent2 = new Intent(getApplicationContext(),EditActivity.class);
+                intent2 = new Intent(getApplicationContext(), EditActivity.class);
                 startActivity(intent2);
-
             }
 
 
-            });
-
-
+        });
     }
 
-
-    public void setMemoList(){
-
-        realm=Realm.getDefaultInstance();
+    public void setMemoList() {
+        realm = Realm.getDefaultInstance();
         //Realmからデータ読み取り
-
-        RealmResults<Memo> results=realm.where(Memo.class).findAll();
-        List<Memo> items=realm.copyFromRealm(results);
+        RealmResults<Memo> results = realm.where(Memo.class).findAll();
+        List<Memo> items = realm.copyFromRealm(results);
         ArrayList<Memo> arrayList = new ArrayList<>();
+        //Memoから取り出した情報をすべてitemsに入れる...pictureはbyte型
         arrayList.addAll(items);
 
         ArrayList<Memo> tmp = new ArrayList<>();
 
-        for (int i = 0 ; i<arrayList.size();i++){
+        for (int i = 0; i < arrayList.size(); i++) {
 
             tmp.add(arrayList.get(i));
 
-            if (i % 3  == 2){
-                mCards.add(new Card(tmp.get(0),tmp.get(1),tmp.get(2)));
+            if (i % 3 == 2) {
+                mCards.add(new Card(tmp.get(0), tmp.get(1), tmp.get(2)));
                 tmp.clear();
             }
 
-            if (i == arrayList.size()-1){
-                if (tmp.size() == 1){
-                    mCards.add(new Card(tmp.get(0),new Memo(),new Memo()));
-                }else if (tmp.size() == 2){
-                    mCards.add(new Card(tmp.get(0),tmp.get(1),new Memo()));
+            if (i == arrayList.size() - 1) {
+                if (tmp.size() == 1) {
+                    mCards.add(new Card(tmp.get(0), new Memo(), new Memo()));
+                } else if (tmp.size() == 2) {
+                    mCards.add(new Card(tmp.get(0), tmp.get(1), new Memo()));
                 }
             }
-            MemoAdapter memoAdapter=new MemoAdapter(this,R.layout.activity_card,mCards);
+            MemoAdapter memoAdapter = new MemoAdapter(this, R.layout.activity_card, mCards);
 
             listView.setAdapter(memoAdapter);
         }
-
-
+    }
+        @Override
+        protected void onResume () {
+            super.onResume();
+            setMemoList();
+        }
+        @Override
+        protected void onDestroy () {
+            super.onDestroy();
+            realm.close();
+        }
+}
 
         //pictureをbitmapに変換
         // arrayListにBitmapいれる
@@ -153,24 +147,3 @@ public class ClosetActivity extends AppCompatActivity {
             listView.setAdapter(memoAdapter);
 
         }*/
-    }
-
-    @Override
-    protected void onResume(){
-        super.onResume();
-
-        setMemoList();
-
-
-    }
-
-
-
-
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-
-        realm.close();
-    }
-}
