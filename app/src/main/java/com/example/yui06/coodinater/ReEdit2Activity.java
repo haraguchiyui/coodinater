@@ -32,6 +32,7 @@ public class ReEdit2Activity extends AppCompatActivity {
     Memo2 memo2;
 
     byte[] Rpicture2;
+    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +45,9 @@ public class ReEdit2Activity extends AppCompatActivity {
         contentText1=(EditText)findViewById(R.id.contentText1);
         imageView31=(ImageView)findViewById(R.id.imageView31);
 
-        memo2=realm.where(Memo2.class).equalTo("updateDate",getIntent().getStringExtra("updateDate")).findFirst();
+        memo2=realm.where(Memo2.class).equalTo("updateDate1",getIntent().getStringExtra("updateDate1")).findFirst();
 
-        Bitmap bitmap= BitmapFactory.decodeByteArray(memo2.picture2,0,memo2.picture2.length);
+        bitmap= BitmapFactory.decodeByteArray(memo2.picture2,0,memo2.picture2.length);
 
         colorText1.setText(memo2.color2);
         contentText1.setText(memo2.content2);
@@ -105,7 +106,7 @@ public class ReEdit2Activity extends AppCompatActivity {
 
 
             } else if (requestCode == REQUEST_CODE_CAMERA) {
-                Bitmap bmp1 = (Bitmap) intent.getExtras().get("data");
+                Bitmap bmp1 = (Bitmap) intent.getExtras().get("data1");
                 imageView31.setImageBitmap(bmp1);
                 //byte型に変換
                 ByteArrayOutputStream baos=new ByteArrayOutputStream();

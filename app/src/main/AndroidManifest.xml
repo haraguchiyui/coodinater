@@ -25,6 +25,10 @@
         <activity android:name=".Edit2Activity" />
         <activity android:name=".ReEditActivity" />
         <activity android:name=".ReEdit2Activity"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

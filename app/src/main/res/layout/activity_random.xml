@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#F7F6C3"
         android:orientation="vertical">
 
         <TextView
@@ -17,11 +18,12 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_margin="20dp"
+            android:layout_margin="30dp"
             android:layout_weight="1"
-            android:text="今日のあなたのコーディネートは..."
+            android:text="TODAY'S YOUR COORDINATE IS...."
             android:textColor="#5255A3"
-            android:textSize="18sp" />
+            android:textSize="20sp"
+            app:fontFamily="@font/average" />
 
         <ImageView
             android:id="@+id/imageTops"
@@ -40,15 +42,15 @@
             android:layout_weight="4" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_gravity="right"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="20dp"
             android:layout_weight="1"
-            android:text="で決定！"
+            android:text="DO YOU LIKE IT ??"
             android:textColor="#5255A3"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:fontFamily="sans-serif" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,9 +68,10 @@
                 android:layout_margin="5dp"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="決めなおす"
+                android:text="IF YOU DON'T FEEL LIKE..."
                 android:textColor="#5255A3"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:fontFamily="sans-serif" />
 
             <Button
                 android:id="@+id/again"
@@ -77,9 +80,10 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:background="#5255A3"
+                android:background="#FFFFFF"
                 android:onClick="again"
-                android:text="START" />
+                android:text="RESTART"
+                android:textColor="#46D1A6" />
 
         </LinearLayout>
 

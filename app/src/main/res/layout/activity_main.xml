@@ -18,45 +18,34 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="274dp"
-            android:layout_height="231dp"
+            android:layout_width="300dp"
+            android:layout_height="268dp"
             android:layout_gravity="center"
-            android:layout_margin="40dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="25dp"
             app:srcCompat="@drawable/coordist" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="0dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:text="コーディネートしてもらう"
-            android:textColor="#5255A3"
-            android:textSize="18sp" />
 
         <Button
             android:id="@+id/randomStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="99dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginBottom="30dp"
             android:layout_marginTop="5dp"
             android:background="#FFFFFF"
             android:onClick="randomStart"
             android:text="START"
-            android:textColor="#EFA0C0" />
+            android:textColor="#46D1A6" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
-            android:text="MY CLOSET"
+            android:text="M Y  C L O S E T"
             android:textColor="#5255A3"
-            android:textSize="18sp" />
+            android:textSize="24sp"
+            app:fontFamily="@font/average" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,7 +64,7 @@
                 android:background="#FFFFFF"
                 android:onClick="Tops"
                 android:text="TOPS"
-                android:textColor="#EFA0C0" />
+                android:textColor="#46D1A6" />
 
             <Button
                 android:id="@+id/bottom"
@@ -86,7 +75,7 @@
                 android:background="#FFFFFF"
                 android:onClick="bottoms"
                 android:text="BOTTOMS"
-                android:textColor="#EFA0C0" />
+                android:textColor="#46D1A6" />
         </LinearLayout>
 
     </LinearLayout>

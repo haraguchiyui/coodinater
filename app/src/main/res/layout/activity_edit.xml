@@ -5,6 +5,7 @@
     android:id="@+id/relative5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F7F6C3"
     tools:context=".EditActivity">
 
     <LinearLayout
@@ -27,9 +28,10 @@
             android:layout_gravity="center"
             android:layout_weight="1.5"
             android:ems="10"
-            android:hint="色"
+            android:hint="COLOR"
             android:inputType="textPersonName"
-            android:textColor="#5255A3" />
+            android:textColor="#5255A3"
+            android:textColorHint="#FFFFFF" />
 
         <EditText
             android:id="@+id/contentEditText"
@@ -38,9 +40,10 @@
             android:layout_gravity="center"
             android:layout_weight="1.5"
             android:ems="10"
-            android:hint="種類"
+            android:hint="TYPES"
             android:inputType="textPersonName"
-            android:textColor="#5255A3" />
+            android:textColor="#5255A3"
+            android:textColorHint="#FFFFFF" />
 
         <Button
             android:id="@+id/addData"
@@ -48,10 +51,10 @@
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="#5255A3"
+            android:background="#FFFFFF"
             android:onClick="addData"
             android:text="add"
-            android:textColor="#FFFFFF" />
+            android:textColor="#46D1A6" />
     </LinearLayout>
 
 </RelativeLayout>

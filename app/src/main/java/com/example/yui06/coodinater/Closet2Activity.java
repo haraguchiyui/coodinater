@@ -28,6 +28,7 @@ public class Closet2Activity extends AppCompatActivity {
     public Realm realm;
     public ListView listView2;
     Bitmap bitmap2;
+    public byte[] data1;
 
 
     @Override
@@ -78,7 +79,7 @@ public class Closet2Activity extends AppCompatActivity {
         ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
         bmp1.compress(Bitmap.CompressFormat.PNG,100,baos1);
 
-        byte[] data1 = baos1.toByteArray();
+        data1 = baos1.toByteArray();
 
         ArrayList<Memo2> tmp2 = new ArrayList<>();
 

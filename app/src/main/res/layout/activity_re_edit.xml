@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#F7F6C3"
         android:orientation="vertical">
 
         <ImageView
@@ -19,8 +20,7 @@
             android:layout_margin="30dp"
             android:layout_weight="6"
             android:padding="10dp"
-            android:paddingBottom="10dp"
-            android:src="@mipmap/ic_launcher_round" />
+            android:paddingBottom="10dp" />
 
         <EditText
             android:id="@+id/colorText"
@@ -29,9 +29,11 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="色"
+            android:hint="COLOR"
             android:inputType="textPersonName"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textColor="#5255A3"
+            android:textColorHint="#46D1A6" />
 
         <EditText
             android:id="@+id/contentText"
@@ -40,9 +42,11 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="種類"
+            android:hint="TYPES"
             android:inputType="textPersonName"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textColor="#5255A3"
+            android:textColorHint="#46D1A6" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,8 +62,10 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="#FFFFFF"
                 android:onClick="delete"
-                android:text="削除" />
+                android:text="DELETE"
+                android:textColor="#46D1A6" />
 
             <Button
                 android:id="@+id/button"
@@ -68,8 +74,10 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="#FFFFFF"
                 android:onClick="reEdit"
-                android:text="Button" />
+                android:text="RESAVE"
+                android:textColor="#46D1A6" />
         </LinearLayout>
 
     </LinearLayout>

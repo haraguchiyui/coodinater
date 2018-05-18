@@ -104,7 +104,7 @@ public class Edit2Activity extends AppCompatActivity {
 
 
             } else if (requestCode == REQUEST_CODE_CAMERA) {
-                Bitmap bmp2 = (Bitmap) intent.getExtras().get("data");
+                Bitmap bmp2 = (Bitmap) intent.getExtras().get("data1");
                 imageView2.setImageBitmap(bmp2);
                 //byte型に変換
                 ByteArrayOutputStream baos=new ByteArrayOutputStream();

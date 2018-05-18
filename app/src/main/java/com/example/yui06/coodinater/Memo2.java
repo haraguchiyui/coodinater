@@ -5,7 +5,7 @@ import io.realm.RealmObject;
 public class Memo2 extends RealmObject {
 
     public byte[] white;
-    public byte[] picture2=white;
+    public byte[] picture2;
 
     public String color2 = "";
 
@@ -13,9 +13,9 @@ public class Memo2 extends RealmObject {
 
     public String updateDate1;
 
-    public Memo2(byte[] data) {
+    public Memo2(byte[] data1) {
 
-        picture2 = data;
+        picture2 = data1;
 
     }
 

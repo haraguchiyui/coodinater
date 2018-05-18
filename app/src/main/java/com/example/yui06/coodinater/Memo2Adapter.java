@@ -25,11 +25,13 @@ public class Memo2Adapter extends ArrayAdapter<CardBottom> {
 
     ArrayList<Bitmap> picture2 = new ArrayList<>();
 
-    Context context1;
+    Context context;
 
 
     public Memo2Adapter(Context context, int resource, List<CardBottom> objects) {
         super(context, resource, objects);
+
+        this.context=context;
         layoutInflater2 = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         bCards = objects;
@@ -99,9 +101,9 @@ public class Memo2Adapter extends ArrayAdapter<CardBottom> {
                 viewHolder1.icon4.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent =new Intent(context1,ReEdit2Activity.class);
+                        Intent intent =new Intent(context,ReEdit2Activity.class);
                         intent.putExtra("updateDate",bCards.get(position).memo4.updateDate1);
-                        context1.startActivity(intent);
+                        context.startActivity(intent);
                     }
                 });
             }
@@ -112,9 +114,9 @@ public class Memo2Adapter extends ArrayAdapter<CardBottom> {
                 viewHolder1.icon5.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent =new Intent(context1,ReEdit2Activity.class);
+                        Intent intent =new Intent(context,ReEdit2Activity.class);
                         intent.putExtra("updateDate",bCards.get(position).memo5.updateDate1);
-                        context1.startActivity(intent);
+                        context.startActivity(intent);
                     }
                 });
 
@@ -125,9 +127,9 @@ public class Memo2Adapter extends ArrayAdapter<CardBottom> {
                 viewHolder1.icon6.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent =new Intent(context1,ReEdit2Activity.class);
+                        Intent intent =new Intent(context,ReEdit2Activity.class);
                         intent.putExtra("updateDate",bCards.get(position).memo6.updateDate1);
-                        context1.startActivity(intent);
+                        context.startActivity(intent);
                     }
                 });
             }

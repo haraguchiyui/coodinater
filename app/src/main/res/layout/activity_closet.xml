@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#F7F6C3"
         android:orientation="vertical">
 
         <TextView
@@ -19,16 +20,30 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:text="My Closet"
+            android:text="MY CLOSET"
             android:textColor="#5255A3"
             android:textSize="25sp"
-            app:fontFamily="sans-serif-smallcaps" />
+            app:fontFamily="@font/average" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.7"
+            android:gravity="center"
+            android:text="TOPS"
+            android:textColor="#5255A3"
+            android:textSize="23sp"
+            app:fontFamily="@font/average" />
 
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="9" />
+            android:layout_weight="9">
+
+        </ListView>
 
     </LinearLayout>
 
@@ -38,12 +53,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="24dp"
-        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="40dp"
         android:clickable="true"
-        android:onClick="add"
-        app:backgroundTint="#5255A3"
+        app:backgroundTint="#FFFFFF"
         app:fabSize="normal"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@mipmap/ic_launcher_foreground" />
 
 </RelativeLayout>
