@@ -101,7 +101,7 @@ public class Closet2Activity extends AppCompatActivity {
             memo2Adapter.notifyDataSetChanged();
         }
 
-        finish();
+
     }
     @Override
     protected void onResume () {
