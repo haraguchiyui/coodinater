@@ -84,6 +84,7 @@
                 android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:background="#FFFFFF"
+                android:onClick="bottoms"
                 android:text="BOTTOMS"
                 android:textColor="#EFA0C0" />
         </LinearLayout>

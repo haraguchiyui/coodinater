@@ -91,17 +91,17 @@ public class Memo2Adapter extends ArrayAdapter<CardBottom> {
         final CardBottom item = getItem(position);
 
         if (item != null) {
-            if (item.memo1.picture2 != null) {
-                Bitmap bmp1 = BitmapFactory.decodeByteArray(item.memo1.picture2, 0, item.memo1.picture2.length);
+            if (item.memo4.picture2 != null) {
+                Bitmap bmp1 = BitmapFactory.decodeByteArray(item.memo4.picture2, 0, item.memo4.picture2.length);
                 viewHolder.icon1.setImageBitmap(bmp1);
             }
 
-            if (item.memo2.picture2 != null) {
-                Bitmap bmp2 = BitmapFactory.decodeByteArray(item.memo2.picture2, 0, item.memo2.picture2.length);
+            if (item.memo5.picture2 != null) {
+                Bitmap bmp2 = BitmapFactory.decodeByteArray(item.memo5.picture2, 0, item.memo5.picture2.length);
                 viewHolder.icon2.setImageBitmap(bmp2);
             }
-            if (item.memo3.picture2 != null) {
-                Bitmap bmp3 = BitmapFactory.decodeByteArray(item.memo3.picture2, 0, item.memo3.picture2.length);
+            if (item.memo6.picture2 != null) {
+                Bitmap bmp3 = BitmapFactory.decodeByteArray(item.memo6.picture2, 0, item.memo6.picture2.length);
                 viewHolder.icon3.setImageBitmap(bmp3);
             }
         }

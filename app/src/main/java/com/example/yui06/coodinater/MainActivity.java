@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void Bottoms(View v){
+    public void bottoms(View v){
         Intent intent=new Intent(this,Closet2Activity.class);
         startActivity(intent);
     }

@@ -152,10 +152,6 @@ public class Edit2Activity extends AppCompatActivity {
         finish();
 
 
-        Intent intent=new Intent(this,Closet2Activity.class);
-        startActivity(intent);
-
-
 
     }
 
