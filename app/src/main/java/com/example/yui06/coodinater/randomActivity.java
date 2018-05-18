@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,30 +55,34 @@ public class randomActivity extends AppCompatActivity {
             Log.d("item", String.valueOf(items.size()));
 
 
-            //itemsの写真データだけをbitmap型でリストに
 
 
             for (int i = 0; i < items.size(); i++) {
 
+//closetに服が登録されてないとき、toastをだしてmainに戻りたい....
+                if (items.size()<0){
+                    Toast.makeText(this,"MY CLOSETに服を登録してください",Toast.LENGTH_LONG).show();
+                    finish();
+                }else if(items2.size()<0){
+                    Toast.makeText(this,"MY CLOSETに服を登録してください",Toast.LENGTH_LONG).show();
+                    finish();
+                }else{
+
+
+                    //pictureをbitmap型にしてlistに。
                 bmp = null;
-                bmp=null;
+                bmp1=null;
 
                 bmp = BitmapFactory.decodeByteArray(items.get(i).picture, 0, items.get(i).picture.length);
                 bmp1=BitmapFactory.decodeByteArray(items2.get(i).picture2,0,items2.get(i).picture2.length);
 
                 arrayPicture.add(bmp);
-                arrayPicture2.add(bmp1);
+                arrayPicture2.add(bmp1);}
+
 
             }
 
-            //
-
-
-
             selectCloth();
-
-
-
 
         }
 
@@ -85,12 +90,11 @@ public class randomActivity extends AppCompatActivity {
 
             Random random = new Random();
             number = random.nextInt(arrayPicture.size());
-
             imageTops.setImageBitmap(arrayPicture.get(number));
 
-            Random random1=new Random();
-            number1 =random.nextInt(arrayPicture2.size());
 
+            Random random1=new Random();
+            number1 = random.nextInt(arrayPicture2.size());
             imageBottoms.setImageBitmap(arrayPicture2.get(number1));
 
         }

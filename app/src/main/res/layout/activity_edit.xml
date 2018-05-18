@@ -31,7 +31,7 @@
             android:hint="COLOR"
             android:inputType="textPersonName"
             android:textColor="#5255A3"
-            android:textColorHint="#FFFFFF" />
+            android:textColorHint="#46D1A6" />
 
         <EditText
             android:id="@+id/contentEditText"
@@ -43,7 +43,7 @@
             android:hint="TYPES"
             android:inputType="textPersonName"
             android:textColor="#5255A3"
-            android:textColorHint="#FFFFFF" />
+            android:textColorHint="#46D1A6" />
 
         <Button
             android:id="@+id/addData"

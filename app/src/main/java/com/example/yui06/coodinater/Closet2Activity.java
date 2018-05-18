@@ -99,10 +99,10 @@ public class Closet2Activity extends AppCompatActivity {
                     bCards.add(new CardBottom(tmp2.get(0), tmp2.get(1), new Memo2(data1)));
                 }
             }
-            memo2Adapter.notifyDataSetChanged();
+
         }
 
-
+        memo2Adapter.notifyDataSetChanged();
     }
     @Override
     protected void onResume () {

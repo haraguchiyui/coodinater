@@ -95,11 +95,15 @@ public class ClosetActivity extends AppCompatActivity {
                     mCards.add(new Card(tmp.get(0), tmp.get(1), new Memo(data)));
                 }
             }
-            memoAdapter.notifyDataSetChanged();
         }
+
+        memoAdapter.notifyDataSetChanged();
+
     }
-        @Override
-        protected void onResume () {
+
+
+    @Override
+    protected void onResume () {
             super.onResume();
             setMemoList();
         }
