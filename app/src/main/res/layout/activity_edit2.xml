@@ -48,7 +48,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="#5255A3"
-            android:onClick="addData"
+            android:onClick="AddData2"
             android:text="add"
             android:textColor="#FFFFFF" />
     </LinearLayout>

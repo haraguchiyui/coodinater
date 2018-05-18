@@ -22,8 +22,11 @@ public class randomActivity extends AppCompatActivity {
         ImageView imageTops;
         ImageView imageBottoms;
         int number;
+        int number1;
         Bitmap bmp;
+        Bitmap bmp1;
         ArrayList<Bitmap> arrayPicture = new ArrayList<>();
+        ArrayList<Bitmap> arrayPicture2 = new ArrayList<>();
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +40,16 @@ public class randomActivity extends AppCompatActivity {
             realm = Realm.getDefaultInstance();
             //Realmからデータ読み取り
             RealmResults<Memo> results = realm.where(Memo.class).findAll();
+            RealmResults<Memo2> results1=realm.where(Memo2.class).findAll();
+
             List<Memo> items = realm.copyFromRealm(results);
+            List<Memo2> items2=realm.copyFromRealm(results1);
+
             ArrayList<Memo> clothArray = new ArrayList<>();
+            ArrayList<Memo2> clothArray2=new ArrayList<>();
             //Memoから取り出した情報をすべてitemsに入れる...pictureはbyte型
             clothArray.addAll(items);
+            clothArray2.addAll(items2);
 
             Log.d("item", String.valueOf(items.size()));
 
@@ -51,10 +60,13 @@ public class randomActivity extends AppCompatActivity {
             for (int i = 0; i < items.size(); i++) {
 
                 bmp = null;
+                bmp=null;
 
                 bmp = BitmapFactory.decodeByteArray(items.get(i).picture, 0, items.get(i).picture.length);
+                bmp1=BitmapFactory.decodeByteArray(items2.get(i).picture2,0,items2.get(i).picture2.length);
 
                 arrayPicture.add(bmp);
+                arrayPicture2.add(bmp1);
 
             }
 
@@ -75,6 +87,11 @@ public class randomActivity extends AppCompatActivity {
             number = random.nextInt(arrayPicture.size());
 
             imageTops.setImageBitmap(arrayPicture.get(number));
+
+            Random random1=new Random();
+            number1 =random.nextInt(arrayPicture2.size());
+
+            imageBottoms.setImageBitmap(arrayPicture2.get(number1));
 
         }
 

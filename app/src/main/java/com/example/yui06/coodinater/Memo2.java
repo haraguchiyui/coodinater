@@ -11,6 +11,8 @@ public class Memo2 extends RealmObject {
 
     public String content2 = "";
 
+    public String updateDate1;
+
     public Memo2(byte[] data) {
 
         picture2 = data;

@@ -65,20 +65,20 @@ public class Closet2Activity extends AppCompatActivity {
         bCards.clear();
 
         //Realmからデータ読み取り
-        RealmResults<Memo2> results = realm.where(Memo2.class).findAll();
-        Log.e("TAGTAG", String.valueOf(results.size()));
-        List<Memo2> items = realm.copyFromRealm(results);
+        RealmResults<Memo2> results1 = realm.where(Memo2.class).findAll();
+        Log.e("TAGTAG", String.valueOf(results1.size()));
+        List<Memo2> items1 = realm.copyFromRealm(results1);
         ArrayList<Memo2> arrayList2 = new ArrayList<>();
         //Memoから取り出した情報をすべてitemsに入れる...pictureはbyte型
-        arrayList2.addAll(items);
+        arrayList2.addAll(items1);
 
         Resources res=getResources();
-        Bitmap bmp=BitmapFactory.decodeResource(res,R.drawable.white);
+        Bitmap bmp1=BitmapFactory.decodeResource(res,R.drawable.white);
 
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.PNG,100,baos);
+        ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
+        bmp1.compress(Bitmap.CompressFormat.PNG,100,baos1);
 
-        byte[] data = baos.toByteArray();
+        byte[] data1 = baos1.toByteArray();
 
         ArrayList<Memo2> tmp2 = new ArrayList<>();
 
@@ -93,9 +93,9 @@ public class Closet2Activity extends AppCompatActivity {
 
             if (i == arrayList2.size() - 1) {
                 if (tmp2.size() == 1) {
-                    bCards.add(new CardBottom(tmp2.get(0), new Memo2(data), new Memo2(data)));
+                    bCards.add(new CardBottom(tmp2.get(0), new Memo2(data1), new Memo2(data1)));
                 } else if (tmp2.size() == 2) {
-                    bCards.add(new CardBottom(tmp2.get(0), tmp2.get(1), new Memo2(data)));
+                    bCards.add(new CardBottom(tmp2.get(0), tmp2.get(1), new Memo2(data1)));
                 }
             }
             memo2Adapter.notifyDataSetChanged();

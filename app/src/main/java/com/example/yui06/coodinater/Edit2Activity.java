@@ -18,6 +18,9 @@ import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import io.realm.Realm;
 
@@ -117,7 +120,7 @@ public class Edit2Activity extends AppCompatActivity {
 
     }
 
-    public void save(final String color2, final String content2, final byte[] picture2) {
+    public void save(final String color2, final String content2, final byte[] picture2,final String updateDate1) {
 
         realm = Realm.getDefaultInstance();
 
@@ -129,6 +132,7 @@ public class Edit2Activity extends AppCompatActivity {
             public void execute(Realm realm) {
                 Memo2 memo2= realm.createObject(Memo2.class);
                 memo2.picture2 = picture2;
+                memo2.updateDate1= updateDate1;
                 memo2.color2 = color2;
                 memo2.content2 = content2;
 
@@ -137,14 +141,18 @@ public class Edit2Activity extends AppCompatActivity {
 
     }
 
-    public void setAddData2(View view) {
+    public void AddData2(View view) {
 
         String color2 = colorEditText2.getText().toString();
 
         String content2 = contentEditText2.getText().toString();
 
+        Date date1=new Date();
+        SimpleDateFormat sdf1 =new SimpleDateFormat("yyyy-mm-dd HH:mm:ss", Locale.JAPANESE);
+        String updateDate1=sdf1.format(date1);
 
-        save(color2,content2,picture2);
+
+        save(color2,content2,picture2,updateDate1);
 
         Log.d("保存",String.valueOf(content2));
 

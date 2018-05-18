@@ -23,7 +23,8 @@
         <activity android:name=".randomActivity" />
         <activity android:name=".Closet2Activity" />
         <activity android:name=".Edit2Activity" />
-        <activity android:name=".ReEditActivity"></activity>
+        <activity android:name=".ReEditActivity" />
+        <activity android:name=".ReEdit2Activity"></activity>
     </application>
 
 </manifest>
