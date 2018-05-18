@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="20dp"
-            android:text="今日のあなたのコーディネートは..." />
+            android:text="今日のあなたのコーディネートは..."
+            android:textColor="#5255A3" />
 
         <ImageView
             android:id="@+id/imageTops"
@@ -40,7 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="20dp"
-            android:text="で決定！" />
+            android:text="で決定！"
+            android:textColor="#5255A3" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -56,7 +58,8 @@
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
                 android:layout_weight="1"
-                android:text="決めなおす" />
+                android:text="決めなおす"
+                android:textColor="#5255A3" />
 
             <Button
                 android:id="@+id/again"
@@ -65,6 +68,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
                 android:layout_weight="1"
+                android:background="#5255A3"
                 android:onClick="again"
                 android:text="START" />
 

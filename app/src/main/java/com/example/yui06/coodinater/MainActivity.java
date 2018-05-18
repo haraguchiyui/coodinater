@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         relative4=(RelativeLayout)findViewById(R.id.relative4);
         relative5=(RelativeLayout)findViewById(R.id.relative5);
 
-        Calendar cal= Calendar.getInstance();
+        /*Calendar cal= Calendar.getInstance();
         int month = cal.get(Calendar.MONTH);
         if(month>=2){
             if(month<=9){
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }else{
             relative1.setBackgroundColor(Color.rgb(51,153,255));
-        }
+        }*/
 
     }
 

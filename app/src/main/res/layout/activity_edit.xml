@@ -25,7 +25,8 @@
             android:layout_gravity="center"
             android:ems="10"
             android:hint="色"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#5255A3" />
 
         <EditText
             android:id="@+id/contentEditText"
@@ -34,15 +35,18 @@
             android:layout_gravity="center"
             android:ems="10"
             android:hint="種類"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#5255A3" />
 
         <Button
             android:id="@+id/addData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="#5255A3"
             android:onClick="addData"
-            android:text="add" />
+            android:text="add"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
 </RelativeLayout>
