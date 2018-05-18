@@ -22,7 +22,8 @@
         <activity android:name=".CardBottom" />
         <activity android:name=".randomActivity" />
         <activity android:name=".Closet2Activity" />
-        <activity android:name=".Edit2Activity"></activity>
+        <activity android:name=".Edit2Activity" />
+        <activity android:name=".ReEditActivity"></activity>
     </application>
 
 </manifest>

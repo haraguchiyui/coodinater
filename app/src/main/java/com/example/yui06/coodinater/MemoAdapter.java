@@ -1,6 +1,7 @@
 package com.example.yui06.coodinater;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
@@ -25,9 +26,12 @@ public class MemoAdapter extends ArrayAdapter<Card> {
 
     ArrayList<Bitmap> picture = new ArrayList<>();
 
+    Context context;
+
 
     public MemoAdapter(Context context, int resource, List<Card> objects) {
         super(context, resource, objects);
+        this.context=context;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         mCards = objects;
@@ -73,7 +77,6 @@ public class MemoAdapter extends ArrayAdapter<Card> {
             icon3 = (ImageView) view.findViewById(R.id.image_view_3);
 
         }
-
     }
 
 
@@ -96,15 +99,39 @@ public class MemoAdapter extends ArrayAdapter<Card> {
             if (item.memo1.picture != null) {
                 Bitmap bmp1 = BitmapFactory.decodeByteArray(item.memo1.picture, 0, item.memo1.picture.length);
                 viewHolder.icon1.setImageBitmap(bmp1);
+                viewHolder.icon1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent =new Intent(context,ReEditActivity.class);
+                        intent.putExtra("updateDate",mCards.get(position).memo1.updateDate);
+                        context.startActivity(intent);
+                    }
+                });
             }
 
             if (item.memo2.picture != null) {
                 Bitmap bmp2 = BitmapFactory.decodeByteArray(item.memo2.picture, 0, item.memo2.picture.length);
                 viewHolder.icon2.setImageBitmap(bmp2);
+                viewHolder.icon2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent =new Intent(context,ReEditActivity.class);
+                        intent.putExtra("updateDate",mCards.get(position).memo2.updateDate);
+                        context.startActivity(intent);
+                    }
+                });
             }
             if (item.memo3.picture != null) {
                 Bitmap bmp3 = BitmapFactory.decodeByteArray(item.memo3.picture, 0, item.memo3.picture.length);
                 viewHolder.icon3.setImageBitmap(bmp3);
+                viewHolder.icon3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent =new Intent(context,ReEditActivity.class);
+                        intent.putExtra("updateDate",mCards.get(position).memo3.updateDate);
+                        context.startActivity(intent);
+                    }
+                });
             }
         }
         return convertView;

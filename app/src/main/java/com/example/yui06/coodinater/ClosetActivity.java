@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -58,9 +59,11 @@ public class ClosetActivity extends AppCompatActivity {
     }
 
     public void setMemoList() {
+        mCards.clear();
         realm = Realm.getDefaultInstance();
         //Realmからデータ読み取り
         RealmResults<Memo> results = realm.where(Memo.class).findAll();
+        Log.e("TAGTAG", String.valueOf(results.size()));
         List<Memo> items = realm.copyFromRealm(results);
         ArrayList<Memo> arrayList = new ArrayList<>();
         //Memoから取り出した情報をすべてitemsに入れる...pictureはbyte型
@@ -92,9 +95,7 @@ public class ClosetActivity extends AppCompatActivity {
                     mCards.add(new Card(tmp.get(0), tmp.get(1), new Memo(data)));
                 }
             }
-            MemoAdapter memoAdapter = new MemoAdapter(this, R.layout.activity_card, mCards);
-
-            listView.setAdapter(memoAdapter);
+            memoAdapter.notifyDataSetChanged();
         }
     }
         @Override

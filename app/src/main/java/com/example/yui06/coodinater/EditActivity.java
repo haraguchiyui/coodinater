@@ -20,7 +20,11 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.SimpleTimeZone;
 
 import io.realm.Realm;
 
@@ -126,7 +130,7 @@ public class EditActivity extends AppCompatActivity {
 
     }
 
-    public void save(final String color, final String content, final byte[] picture) {
+    public void save(final String color, final String content, final byte[] picture, final String updateDate) {
 
         realm = Realm.getDefaultInstance();
 
@@ -137,6 +141,7 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void execute(Realm realm) {
                 Memo memo= realm.createObject(Memo.class);
+                memo.updateDate=updateDate;
                 memo.picture = picture;
                 memo.color = color;
                 memo.content = content;
@@ -152,17 +157,18 @@ public class EditActivity extends AppCompatActivity {
 
         String content = contentEditText.getText().toString();
 
+        Date date=new Date();
+        SimpleDateFormat sdf =new SimpleDateFormat("yyyy-mm-dd HH:mm:ss", Locale.JAPANESE);
+        String updateDate=sdf.format(date);
 
-        save(color,content,picture);
+
+        save(color,content,picture,updateDate);
 
         Log.d("保存",String.valueOf(content));
 
 
         finish();
-
-
-        Intent intent=new Intent(this,ClosetActivity.class);
-        startActivity(intent);
+;
 
 
 
