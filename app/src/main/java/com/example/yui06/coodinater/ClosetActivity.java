@@ -1,6 +1,7 @@
 package com.example.yui06.coodinater;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,6 +66,14 @@ public class ClosetActivity extends AppCompatActivity {
         //Memoから取り出した情報をすべてitemsに入れる...pictureはbyte型
         arrayList.addAll(items);
 
+        Resources res=getResources();
+        Bitmap bmp=BitmapFactory.decodeResource(res,R.drawable.white);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.PNG,100,baos);
+
+        byte[] data = baos.toByteArray();
+
         ArrayList<Memo> tmp = new ArrayList<>();
 
         for (int i = 0; i < arrayList.size(); i++) {
@@ -77,9 +87,9 @@ public class ClosetActivity extends AppCompatActivity {
 
             if (i == arrayList.size() - 1) {
                 if (tmp.size() == 1) {
-                    mCards.add(new Card(tmp.get(0), new Memo(), new Memo()));
+                    mCards.add(new Card(tmp.get(0), new Memo(data), new Memo(data)));
                 } else if (tmp.size() == 2) {
-                    mCards.add(new Card(tmp.get(0), tmp.get(1), new Memo()));
+                    mCards.add(new Card(tmp.get(0), tmp.get(1), new Memo(data)));
                 }
             }
             MemoAdapter memoAdapter = new MemoAdapter(this, R.layout.activity_card, mCards);

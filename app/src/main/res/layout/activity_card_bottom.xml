@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.tomiyama.noir.photolayout.SquareImageView
+        <com.example.yui06.coodinater.SquareImageViewBottoms
             android:id="@+id/image_view4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
             android:background="@android:color/darker_gray"
             android:scaleType="centerCrop" />
 
-        <com.tomiyama.noir.photolayout.SquareImageView
+        <com.example.yui06.coodinater.SquareImageViewBottoms
             android:id="@+id/image_view5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
             android:background="@android:color/darker_gray"
             android:scaleType="centerCrop" />
 
-        <com.tomiyama.noir.photolayout.SquareImageView
+        <com.example.yui06.coodinater.SquareImageViewBottoms
             android:id="@+id/image_view6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

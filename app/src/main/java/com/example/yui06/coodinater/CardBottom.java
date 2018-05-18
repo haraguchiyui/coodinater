@@ -1,13 +1,16 @@
 package com.example.yui06.coodinater;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
-public class CardBottom extends AppCompatActivity {
+public class CardBottom {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_card_bottom);
+    public Memo2 memo1;
+    public Memo2 memo2;
+    public Memo2 memo3;
+
+    public CardBottom(Memo2 memo1, Memo2 memo2, Memo2 memo3) {
+        this.memo1 = memo1;
+        this.memo2 = memo2;
+        this.memo3 = memo3;
+
     }
 }

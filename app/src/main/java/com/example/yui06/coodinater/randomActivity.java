@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -20,14 +21,17 @@ public class randomActivity extends AppCompatActivity {
         public Realm realm;
         ImageView imageTops;
         ImageView imageBottoms;
+        int number;
+        Bitmap bmp;
+        ArrayList<Bitmap> arrayPicture = new ArrayList<>();
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_random);
 
-            imageTops=(ImageView)findViewById(R.id.imageTops);
-            imageBottoms=(ImageView)findViewById(R.id.imageBottoms);
+            imageTops = (ImageView) findViewById(R.id.imageTops);
+            imageBottoms = (ImageView) findViewById(R.id.imageBottoms);
 
 
             realm = Realm.getDefaultInstance();
@@ -38,26 +42,39 @@ public class randomActivity extends AppCompatActivity {
             //Memoから取り出した情報をすべてitemsに入れる...pictureはbyte型
             clothArray.addAll(items);
 
+            Log.d("item", String.valueOf(items.size()));
+
 
             //itemsの写真データだけをbitmap型でリストに
-            ArrayList<Bitmap> arrayPicture=new ArrayList<>();
 
-            for (int i=0 ;i<items.size();i++) {
 
-                Bitmap bmp = null;
-//            byte[] picture=null;
-                if (bmp != null) {
-                    bmp = BitmapFactory.decodeByteArray(items.get(i).picture, 0, items.get(i).picture.length);
+            for (int i = 0; i < items.size(); i++) {
 
-                }
+                bmp = null;
+
+                bmp = BitmapFactory.decodeByteArray(items.get(i).picture, 0, items.get(i).picture.length);
+
                 arrayPicture.add(bmp);
 
-                Random random = new Random();
-                random.nextInt(arrayPicture.size());
-
-                imageTops.setImageBitmap(bmp);
             }
 
+            //
+
+
+
+            selectCloth();
+
+
+
+
+        }
+
+        void selectCloth(){
+
+            Random random = new Random();
+            number = random.nextInt(arrayPicture.size());
+
+            imageTops.setImageBitmap(arrayPicture.get(number));
 
         }
 
@@ -69,8 +86,7 @@ public class randomActivity extends AppCompatActivity {
 
 
         public void again(View v){
-            Intent intent=new Intent(this,randomActivity.class);
-            startActivity(intent);
+           selectCloth();
 
         }
 }

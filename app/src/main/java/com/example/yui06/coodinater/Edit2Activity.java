@@ -1,66 +1,58 @@
 package com.example.yui06.coodinater;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.List;
 
 import io.realm.Realm;
 
-import static android.provider.MediaStore.Video.Thumbnails.EXTERNAL_CONTENT_URI;
+public class Edit2Activity extends AppCompatActivity {
 
-public class EditActivity extends AppCompatActivity {
 
     static final int REQUEST_CODE_GALLERY = 1;
     static final int REQUEST_CODE_CAMERA = 2;
 
     public Realm realm;
 
-    public EditText colorEditText;
-    public EditText contentEditText;
+    public EditText colorEditText2;
+    public EditText contentEditText2;
 
 
-    ImageView imageView;
-    Button addData;
+    ImageView imageView2;
+    Button addData2;
 
-    byte[] picture;
+    byte[] picture2;
 
-    ListView listView;
-    MemoAdapter memoAdapter;
-
+    ListView listView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit);
+        setContentView(R.layout.activity_edit2);
+
+        imageView2 = (ImageView) findViewById(R.id.imageView2);
+
+        colorEditText2 = (EditText) findViewById(R.id.colorEditText2);
+        contentEditText2 = (EditText) findViewById(R.id.contentEditText2);
+        addData2=(Button)findViewById(R.id.addData);
 
 
-
-        imageView = (ImageView) findViewById(R.id.imageView);
-
-        colorEditText = (EditText) findViewById(R.id.colorEditText);
-        contentEditText = (EditText) findViewById(R.id.contentEditText);
-        addData=(Button)findViewById(R.id.addData);
-
-
-        new AlertDialog.Builder(EditActivity.this)
+        new AlertDialog.Builder(Edit2Activity.this)
                 .setTitle("画像を選択")
                 .setPositiveButton(
                         "カメラロール",
@@ -84,9 +76,8 @@ public class EditActivity extends AppCompatActivity {
                         })
                 .show();
 
+
     }
-
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -96,13 +87,13 @@ public class EditActivity extends AppCompatActivity {
             if (requestCode == REQUEST_CODE_GALLERY) {
                 try {
                     InputStream inputStream = getContentResolver().openInputStream(intent.getData());
-                    Bitmap bmp1 = BitmapFactory.decodeStream(inputStream);
+                    Bitmap bmp2 = BitmapFactory.decodeStream(inputStream);
                     inputStream.close();
-                    imageView.setImageBitmap(bmp1);
+                    imageView2.setImageBitmap(bmp2);
                     //byte型に変換
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    bmp1.compress(Bitmap.CompressFormat.JPEG,100,baos);
-                    picture=baos.toByteArray();
+                    bmp2.compress(Bitmap.CompressFormat.JPEG,100,baos);
+                    picture2=baos.toByteArray();
                 } catch (Exception e) {
                     Toast.makeText(this, "エラー", Toast.LENGTH_LONG).show();
                 }
@@ -110,23 +101,23 @@ public class EditActivity extends AppCompatActivity {
 
 
             } else if (requestCode == REQUEST_CODE_CAMERA) {
-                Bitmap bmp1 = (Bitmap) intent.getExtras().get("data");
-                imageView.setImageBitmap(bmp1);
+                Bitmap bmp2 = (Bitmap) intent.getExtras().get("data");
+                imageView2.setImageBitmap(bmp2);
                 //byte型に変換
                 ByteArrayOutputStream baos=new ByteArrayOutputStream();
-                bmp1.compress(Bitmap.CompressFormat.JPEG,100,baos);
-                picture=baos.toByteArray();
+                bmp2.compress(Bitmap.CompressFormat.JPEG,100,baos);
+                picture2=baos.toByteArray();
 
             }
 
         } else if (resultCode == RESULT_CANCELED) {
-            Toast.makeText(EditActivity.this, "CANCEL", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Edit2Activity.this, "CANCEL", Toast.LENGTH_SHORT).show();
         }
 
 
     }
 
-    public void save(final String color, final String content, final byte[] picture) {
+    public void save(final String color2, final String content2, final byte[] picture2) {
 
         realm = Realm.getDefaultInstance();
 
@@ -136,32 +127,32 @@ public class EditActivity extends AppCompatActivity {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                Memo memo= realm.createObject(Memo.class);
-                memo.picture = picture;
-                memo.color = color;
-                memo.content = content;
+                Memo2 memo2= realm.createObject(Memo2.class);
+                memo2.picture2 = picture2;
+                memo2.color2 = color2;
+                memo2.content2 = content2;
 
             }
         });
 
     }
 
-    public void addData(View view) {
+    public void setAddData2(View view) {
 
-        String color = colorEditText.getText().toString();
+        String color2 = colorEditText2.getText().toString();
 
-        String content = contentEditText.getText().toString();
+        String content2 = contentEditText2.getText().toString();
 
 
-        save(color,content,picture);
+        save(color2,content2,picture2);
 
-        Log.d("保存",String.valueOf(content));
+        Log.d("保存",String.valueOf(content2));
 
 
         finish();
 
 
-        Intent intent=new Intent(this,ClosetActivity.class);
+        Intent intent=new Intent(this,Closet2Activity.class);
         startActivity(intent);
 
 
@@ -174,8 +165,4 @@ public class EditActivity extends AppCompatActivity {
 
         realm.close();
     }
-
-
 }
-
-

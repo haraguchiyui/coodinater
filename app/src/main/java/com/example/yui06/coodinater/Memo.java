@@ -15,36 +15,24 @@ import io.realm.RealmObject;
 public class Memo extends RealmObject {
 
     public byte[] white;
-
-    public byte[] picture=white ;
+    public byte[] picture=white;
 
     public String color = "";
 
     public String content = "";
 
-    public Memo() {
+    public Memo(byte[] data) {
 
+        picture = data;
 
-
-//疑問 getContext()にエラーが起きたため、getContextメソッドを作りました。
-// return nullで返しているからnull pointerExceptionだと推測していますが、だとすると具体的に何を入れたらいいのかがわかりません。
-
-
-
-        Resources res=this.getContext().getResources();
-        Bitmap bmp=BitmapFactory.decodeResource(res,R.drawable.white);
-
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.PNG,100,baos);
-        white=baos.toByteArray();
-
-        this.white = white;
     }
 
-    private Context getContext() {
-        return null;
+    public Memo(){
+        picture=white;
+        color="";
+        content="";
     }
+
 
 
 }

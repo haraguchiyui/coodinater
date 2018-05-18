@@ -50,4 +50,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=new Intent(this,ClosetActivity.class);
         startActivity(intent);
     }
+
+    public void Bottoms(View v){
+        Intent intent=new Intent(this,Closet2Activity.class);
+        startActivity(intent);
+    }
 }

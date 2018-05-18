@@ -17,12 +17,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CardActivity" />
         <activity android:name=".ClosetActivity" />
         <activity android:name=".EditActivity" />
-        <activity android:name=".Card" />
         <activity android:name=".CardBottom" />
-        <activity android:name=".randomActivity"></activity>
+        <activity android:name=".randomActivity" />
+        <activity android:name=".Closet2Activity" />
+        <activity android:name=".Edit2Activity"></activity>
     </application>
 
 </manifest>
