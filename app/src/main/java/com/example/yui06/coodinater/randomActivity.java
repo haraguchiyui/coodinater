@@ -29,6 +29,10 @@ public class randomActivity extends AppCompatActivity {
         ArrayList<Bitmap> arrayPicture = new ArrayList<>();
         ArrayList<Bitmap> arrayPicture2 = new ArrayList<>();
 
+        Random random;
+        Random random1;
+
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -41,13 +45,13 @@ public class randomActivity extends AppCompatActivity {
             realm = Realm.getDefaultInstance();
             //Realmからデータ読み取り
             RealmResults<Memo> results = realm.where(Memo.class).findAll();
-            RealmResults<Memo2> results1=realm.where(Memo2.class).findAll();
+            RealmResults<Memo2> results1 = realm.where(Memo2.class).findAll();
 
             List<Memo> items = realm.copyFromRealm(results);
-            List<Memo2> items2=realm.copyFromRealm(results1);
+            List<Memo2> items2 = realm.copyFromRealm(results1);
 
             ArrayList<Memo> clothArray = new ArrayList<>();
-            ArrayList<Memo2> clothArray2=new ArrayList<>();
+            ArrayList<Memo2> clothArray2 = new ArrayList<>();
             //Memoから取り出した情報をすべてitemsに入れる...pictureはbyte型
             clothArray.addAll(items);
             clothArray2.addAll(items2);
@@ -55,46 +59,49 @@ public class randomActivity extends AppCompatActivity {
             Log.d("item", String.valueOf(items.size()));
 
 
+//closetに服が登録されてないとき、toastをだしてmainに戻りたい....
+                if (items.size() == 0) {
+                    Toast.makeText(this, "MY CLOSETに服を登録してください", Toast.LENGTH_LONG).show();
+                    this.finish();
+                } else if (items2.size() == 0) {
+                    Toast.makeText(this, "MY CLOSETに服を登録してください", Toast.LENGTH_LONG).show();
+                    this.finish();
+                }
 
 
             for (int i = 0; i < items.size(); i++) {
-
-//closetに服が登録されてないとき、toastをだしてmainに戻りたい....
-                if (items.size()<0){
-                    Toast.makeText(this,"MY CLOSETに服を登録してください",Toast.LENGTH_LONG).show();
-                    finish();
-                }else if(items2.size()<0){
-                    Toast.makeText(this,"MY CLOSETに服を登録してください",Toast.LENGTH_LONG).show();
-                    finish();
-                }else{
-
-
-                    //pictureをbitmap型にしてlistに。
+                //pictureをbitmap型にしてlistに。
                 bmp = null;
-                bmp1=null;
+                bmp1 = null;
 
                 bmp = BitmapFactory.decodeByteArray(items.get(i).picture, 0, items.get(i).picture.length);
-                bmp1=BitmapFactory.decodeByteArray(items2.get(i).picture2,0,items2.get(i).picture2.length);
+                bmp1 = BitmapFactory.decodeByteArray(items2.get(i).picture2, 0, items2.get(i).picture2.length);
 
                 arrayPicture.add(bmp);
-                arrayPicture2.add(bmp1);}
+                arrayPicture2.add(bmp1);
 
 
+                selectCloth();
             }
-
-            selectCloth();
-
         }
 
+
+
+
+
+
+
+
+        protected
         void selectCloth(){
 
-            Random random = new Random();
+            random = new Random();
             number = random.nextInt(arrayPicture.size());
             imageTops.setImageBitmap(arrayPicture.get(number));
 
 
-            Random random1=new Random();
-            number1 = random.nextInt(arrayPicture2.size());
+            random1=new Random();
+            number1 = random1.nextInt(arrayPicture2.size());
             imageBottoms.setImageBitmap(arrayPicture2.get(number1));
 
         }

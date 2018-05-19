@@ -62,7 +62,7 @@
                 android:layout_weight="1"
                 android:background="#FFFFFF"
                 android:onClick="reEdit"
-                android:text="Button"
+                android:text="RESAVE"
                 android:textColor="#46D1A6" />
 
             <Button
@@ -74,7 +74,7 @@
                 android:layout_weight="1"
                 android:background="#FFFFFF"
                 android:onClick="delete"
-                android:text="削除"
+                android:text="DELETE"
                 android:textColor="#46D1A6" />
         </LinearLayout>
 

@@ -45,7 +45,7 @@ public class ReEdit2Activity extends AppCompatActivity {
         contentText1=(EditText)findViewById(R.id.contentText1);
         imageView31=(ImageView)findViewById(R.id.imageView31);
 
-        memo2=realm.where(Memo2.class).equalTo("updateDate1",getIntent().getStringExtra("updateDate1")).findFirst();
+        memo2=realm.where(Memo2.class).equalTo("updateDate",getIntent().getStringExtra("updateDate")).findFirst();
 
         bitmap= BitmapFactory.decodeByteArray(memo2.picture2,0,memo2.picture2.length);
 

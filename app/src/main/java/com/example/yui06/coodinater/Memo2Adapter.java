@@ -102,7 +102,7 @@ public class Memo2Adapter extends ArrayAdapter<CardBottom> {
                     @Override
                     public void onClick(View v) {
                         Intent intent =new Intent(context,ReEdit2Activity.class);
-                        intent.putExtra("updateDate",bCards.get(position).memo4.updateDate1);
+                        intent.putExtra("updateDate",bCards.get(position).memo4.updateDate);
                         context.startActivity(intent);
                     }
                 });
@@ -115,7 +115,7 @@ public class Memo2Adapter extends ArrayAdapter<CardBottom> {
                     @Override
                     public void onClick(View v) {
                         Intent intent =new Intent(context,ReEdit2Activity.class);
-                        intent.putExtra("updateDate",bCards.get(position).memo5.updateDate1);
+                        intent.putExtra("updateDate",bCards.get(position).memo5.updateDate);
                         context.startActivity(intent);
                     }
                 });
@@ -128,7 +128,7 @@ public class Memo2Adapter extends ArrayAdapter<CardBottom> {
                     @Override
                     public void onClick(View v) {
                         Intent intent =new Intent(context,ReEdit2Activity.class);
-                        intent.putExtra("updateDate",bCards.get(position).memo6.updateDate1);
+                        intent.putExtra("updateDate",bCards.get(position).memo6.updateDate);
                         context.startActivity(intent);
                     }
                 });

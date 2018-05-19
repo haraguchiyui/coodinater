@@ -132,7 +132,7 @@ public class Edit2Activity extends AppCompatActivity {
             public void execute(Realm realm) {
                 Memo2 memo2= realm.createObject(Memo2.class);
                 memo2.picture2 = picture2;
-                memo2.updateDate1= updateDate1;
+                memo2.updateDate= updateDate1;
                 memo2.color2 = color2;
                 memo2.content2 = content2;
 
