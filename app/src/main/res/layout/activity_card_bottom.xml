@@ -12,7 +12,7 @@
         android:background="#F7F6C3"
         android:orientation="horizontal">
 
-        <com.example.yui06.coodinater.SquareImageViewBottoms
+        <com.example.yui06.coordistcloset.SquareImageViewBottoms
             android:id="@+id/image_view4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
             android:layout_weight="1"
             android:scaleType="centerCrop" />
 
-        <com.example.yui06.coodinater.SquareImageViewBottoms
+        <com.example.yui06.coordistcloset.SquareImageViewBottoms
             android:id="@+id/image_view5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:layout_weight="1"
             android:scaleType="centerCrop" />
 
-        <com.example.yui06.coodinater.SquareImageViewBottoms
+        <com.example.yui06.coordistcloset.SquareImageViewBottoms
             android:id="@+id/image_view6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
